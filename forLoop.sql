@@ -1,0 +1,16 @@
+--FizzBuzz questions with PL/SQL
+
+
+BEGIN
+FOR i IN 1..100 LOOP
+    IF MOD(i, 5) = 0 AND MOD(i, 3) = 0 THEN
+      DBMS_OUTPUT.PUT_LINE('FIZZBUZZ');
+    ELSIF MOD(i,5) = 0 THEN 
+      DBMS_OUTPUT.PUT_LINE('FIZZ');  
+    ELSIF MOD(i, 3) = 0 THEN 
+      DBMS_OUTPUT.PUT_LINE('BUZZ');
+    ELSE
+      DBMS_OUTPUT.PUT_LINE(i);
+    END IF;
+END LOOP;
+END;
