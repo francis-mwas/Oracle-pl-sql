@@ -11,8 +11,6 @@ FROM
     employees_copy;
 
 
-
-
 /* INSERT DATA INTO A CLONED TABLE */
 
 DECLARE
