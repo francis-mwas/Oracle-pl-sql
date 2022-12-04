@@ -40,3 +40,27 @@ BEGIN
 
     END LOOP;
 END;
+
+/* Working with sequences in our table */
+DECLARE
+    v_seq_num NUMBER;
+BEGIN
+    --select employee_id_seq.nextval into v_seq_num from dual;
+    SELECT
+        employee_id_seq.NEXTVAL
+    INTO v_seq_num
+    FROM
+        employees_copy
+    WHERE
+        ROWNUM = 1;
+
+    dbms_output.put_line(v_seq_num);
+END;
+
+/* We can also work with dual table */
+DECLARE
+    v_seq_num NUMBER;
+BEGIN
+    select employee_id_seq.nextval into v_seq_num from dual;
+    dbms_output.put_line(v_seq_num);
+END;
