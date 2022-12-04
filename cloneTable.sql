@@ -41,3 +41,13 @@ BEGIN
 
     END LOOP;
 END;
+
+
+/* DELETE DATA WITH PLSQL */
+begin
+ for i in 207..216 loop
+ DELETE FROM employees_copy
+WHERE
+    employee_id = i;
+ end loop;
+end;
