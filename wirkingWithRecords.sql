@@ -7,7 +7,7 @@ DECLARE
 BEGIN
   SELECT * INTO r_emp 
   FROM   employees 
-  WHERE  employee_id = '101';
+  WHERE  employee_id = '204';
   --r_emp.salary := 2000;
   dbms_output.put_line(r_emp.first_name || ' '                ||
                        r_emp.last_name  || ' earns '          ||
