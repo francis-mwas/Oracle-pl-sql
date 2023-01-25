@@ -29,3 +29,6 @@ end;
 
 --create schema-level type(this is stored in a database);
  create type e_list is varray(15) of varchar2(50);
+
+ --you can also drop a type
+ i.e drop type type_name;
