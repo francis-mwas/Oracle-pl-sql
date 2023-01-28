@@ -1,64 +1,69 @@
-/*********** The Simple Usage of Nested Tables **************/
+
+/*************** Simple nested tables example *****************/
+
 DECLARE
-  TYPE e_list IS TABLE OF VARCHAR2(50);
-  emps e_list;
+    TYPE employeesT_list IS
+        TABLE OF VARCHAR2(50);
+    employeesT employeesT_list;
 BEGIN
-  emps := e_list('Alex','Bruce','John');
-  FOR i IN 1..emps.count() LOOP
-    dbms_output.put_line(emps(i));
-  END LOOP;
+    employeesT := employeesT_list('John', 'Doe', 'Jane', 'Morgan');
+    FOR i IN 1..employeesT.count() LOOP dbms_output.put_line(employeesT(i));
+    END LOOP;
+
 END;
  
 /************************************************************
 Adding a New Value to a Nested Table After the Initialization
 *************************************************************/
 DECLARE
-  TYPE e_list IS TABLE OF VARCHAR2(50);
-  emps e_list;
+  TYPE employeesT_list IS TABLE OF VARCHAR2(50);
+  employeesT employeesT_list;
 BEGIN
-  emps := e_list('Alex','Bruce','John');
-  emps.extend;
-  emps(4) := 'Bob';
-  FOR i IN 1..emps.count() LOOP
-    dbms_output.put_line(emps(i));
+  employeesT := employeesT_list('Alex','Bruce','John');
+  employeesT.extend; --using exend function
+  employeesT(4) := 'Bob';
+  FOR i IN 1..employeesT.count() LOOP
+    dbms_output.put_line(employeesT(i));
   END LOOP;
 END;
  
+
 /*************** Adding Values From a Table *****************/
 DECLARE
-  TYPE e_list IS TABLE OF employees.first_name%type;
-  emps e_list := e_list();
+  TYPE employeesT_list IS TABLE OF employeesT.first_name%type;
+  employeesT employeesT_list := employeesT_list();
   idx  PLS_INTEGER:= 1;
 BEGIN
   FOR x IN 100 .. 110 LOOP
-    emps.extend;
-    SELECT first_name INTO emps(idx) 
-    FROM   employees 
+    dbms_output.put_line("The emp Id is: "|| idx);
+    employeesT.extend;
+    SELECT first_name INTO employeesT(idx) 
+    FROM   employeesT 
     WHERE  employee_id = x;
     idx := idx + 1;
   END LOOP;
-  FOR i IN 1..emps.count() LOOP
-    dbms_output.put_line(emps(i));
+  FOR i IN 1..employeesT.count() LOOP
+    dbms_output.put_line(employeesT(i));
   END LOOP;
 END;
  
 /********************* Delete Example ***********************/
 DECLARE
-  TYPE e_list IS TABLE OF employees.first_name%type;
-  emps e_list := e_list();
+  TYPE employeesT_list IS TABLE OF employeesT.first_name%type;
+  employeesT employeesT_list := employeesT_list();
   idx  PLS_INTEGER := 1;
 BEGIN
   FOR x IN 100 .. 110 LOOP
-    emps.extend;
-    SELECT first_name INTO emps(idx) 
+    employeesT.extend;
+    SELECT first_name INTO employeesT(idx) 
     FROM   employees 
     WHERE  employee_id = x;
     idx := idx + 1;
   END LOOP;
-  emps.delete(3);
-  FOR i IN 1..emps.count() LOOP
-    IF emps.exists(i) THEN 
-       dbms_output.put_line(emps(i));
+  employeesT.delete(3);
+  FOR i IN 1..employeesT.count() LOOP
+    IF employeesT.exists(i) THEN 
+       dbms_output.put_line(employeesT(i));
     END IF;
   END LOOP;
 END;
