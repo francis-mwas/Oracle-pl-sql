@@ -32,3 +32,30 @@ end;
 
  --you can also drop a type
  i.e drop type type_name;
+
+
+ /*
+--cursors are pointers to the data
+ There are two types of cursors:
+    1. Implicit cursor -> created and managed by the db automatically to handle the select, fecthing data from the memory
+    2. Explicit cursor -> Cursors that we create in our code, it helps us control the cursor,to iterate on the results of a query
+*/
+
+************* Using Explicit Cursors***************
+
+The Cursor Usage:
+    -> Declare
+    -> Open 
+    -> Fetch 
+    -> Check
+    -> Close
+
+For example:
+
+DECLARE
+    cursor cursor_name is select_statement;
+BEGIN   
+    open cursor_name;
+    fetch cursor_name into variables, records etc;
+    close cursor_name;
+end;
