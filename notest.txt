@@ -59,3 +59,10 @@ BEGIN
     fetch cursor_name into variables, records etc;
     close cursor_name;
 end;
+
+/************** CUSRSOR ATTRIBUTES *****************/
+There are four cursor attributes:
+-> %FOUND - Returns true if the fecth returned a row
+-> %NOTFOUND - Opposite of %found 
+-> %ISOPEN -Returns true if the cursor is open
+-> %ROWCOUNT - Returns the number of fetched rows 
