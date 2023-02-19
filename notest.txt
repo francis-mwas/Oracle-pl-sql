@@ -66,3 +66,17 @@ There are four cursor attributes:
 -> %NOTFOUND - Opposite of %found 
 -> %ISOPEN -Returns true if the cursor is open
 -> %ROWCOUNT - Returns the number of fetched rows 
+
+Reference cursors(REF cursors)
+- Cursors are pointers
+- You can use a cursor for multiple queries 
+- We cannot:
+    - Assign null values
+    - Use in table-view create codes 
+    - Store in collections
+    - Compare ref cursos values 
+
+Using ref cusors 
+There are two types of reference cursors
+ - Strong(restrictive) cursors 
+ - weak(nonrestrictive) cursors
